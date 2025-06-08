@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>極光捕捉遊戲</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <img src="images/bg.png" class="background" alt="Background" />
+    <div class="aurora-container">
+      <img src="images/aurora1.png" class="aurora hidden" id="aurora1" alt="Aurora 1" />
+      <img src="images/aurora2.png" class="aurora hidden" id="aurora2" alt="Aurora 2" />
+    </div>
+    <button id="capture-btn">
+      <img src="images/shoot.jpg" alt="Capture Aurora" />
+    </button>
+    <div id="result-msg"></div>
+    <div id="score">分數: 0</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
