@@ -1,7 +1,15 @@
+import Link from 'next/link'
+
 export default function ShadowRun() {
   return (
-    <div>
-      <h1>Shadow Run</h1>
+    <div className="h-screen w-full flex flex-col">
+      <Link className="bg-gray-400" href="/">
+        Back
+      </Link>
+      <iframe
+        src="https://shadow-run.vercel.app/"
+        className="grow w-full"
+      ></iframe>
     </div>
-  );
+  )
 }
