@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 const Fail = () => {
@@ -51,4 +52,7 @@ const Fail = () => {
   )
 }
 
-export default Fail
+export default function Page() {
+  return       <Suspense fallback={<div>Loading...</div>}>
+  <Fail /></Suspense>
+}
