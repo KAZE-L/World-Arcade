@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls and Cows Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="title">Bulls and Cows</div>
+        
+        <div class="input-section">
+            <p>Guess a 4-digit number with no repeating digits:</p>
+            <div class="input-container">
+                <input type="text" id="guessInput" maxlength="4" placeholder="">
+                <button id="submitBtn" onclick="makeGuess()">Submit</button>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+
+        <div class="feedback-section">
+            <div class="feedback-title">Feedback</div>
+            <div class="farm-scene">
+                <div id="resultText" class="result-text">Make your first guess!</div>
+                <div class="animals">
+                    <div class="bull" id="bullsDisplay">🐂</div>
+                    <div class="cow" id="cowsDisplay">🐄</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="winSection" class="win-message" style="display: none;">
+            <div id="winText"></div>
+            <button class="play-again-btn" onclick="startNewGame()">play again!</button>
+        </div>
+
+        <div class="history-section">
+            <div class="history-title">Guess History</div>
+            <div class="history-list" id="historyList">
+                <div style="text-align: center; color: #8b4513; font-style: italic;">No guesses yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
