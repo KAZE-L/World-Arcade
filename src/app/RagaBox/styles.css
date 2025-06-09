@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 隱藏所有滾動條 */
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+html, body {
+    overflow: hidden; /* 隱藏頁面級別的滾動條 */
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #2a2a2a;
+    --accent-color: #3a3a3a;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    overflow: hidden; /* 確保遊戲容器內不會出現滾動條 */
+}
+
+/* 頂部控制列樣式 */
+.top-controls {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--secondary-color);
+}
+
+.menu-btn, .control-icon, .play-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 60px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn:hover, .control-icon:hover, .play-btn:hover {
+    background-color: var(--accent-color);
+}
+
+.center-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* 主舞台區域樣式 */
+.stage {
+    flex: 1;
+    background: url('/RagaBox/img/bg_01.png') no-repeat center center;
+    background-size: 150% 150%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    /* padding-bottom: 50px; */
+}
+
+/* 添加背景動態效果 */
+.stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+}
+
+.characters-row {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    max-width: 1600px;
+    /* padding: 0 20px; */
+}
+
+.character-slot {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    /* margin: 0 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.character-base {
+    position: absolute;
+    width: 250%;
+    height: 250%;
+    max-width: none;
+    image-rendering: pixelated;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.character-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+/* 為不同角色設置不同的大小 */
+/* .character-slot[data-slot="0"] .character-base {
+    width: 400%;
+    height: 400%;
+} */
+
+/* 底部工具列樣式 */
+.bottom-controls {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 45vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 主題行 */
+.theme-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.icons-row {
+    flex: 1;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding-top: 25px;  /* 為標籤留出空間 */
+}
+
+/* 添加分類標籤 */
+.icons-row::before {
+    content: attr(data-category);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* 每個分類的顏色 */
+.icons-row[data-category="Tabla"]::before {
+    color: #ff9966;
+}
+
+.icons-row[data-category="Sitar"]::before {
+    color: #66ccff;
+}
+
+.icons-row[data-category="Pad"]::before {
+    color: #99ff99;
+}
+
+.icons-row[data-category="Vocal"]::before {
+    color: #ff99cc;
+}
+
+.icon-slot {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--accent-color);
+    border-radius: 8px;
+}
+
+.icon-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transition: all 0.3s ease;
+}
+
+/* 在icon-slot中的圖片使用不同的樣式 */
+.icon-slot .character-base {
+    position: static;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    top: auto;
+    left: auto;
+    object-fit: contain;
+}
+
+/* 移除數字顯示相關的樣式 */
+.character-slot::after {
+    display: none;
+}
+
+.icon-slot::after {
+    display: none;
+}
+
+/* 圖標懸停效果 */
+.icon-slot:hover {
+    background-color: #4a4a4a;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* 圖標稀有度效果 */
+.icon-slot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    pointer-events: none;
+}
+
+.icon-slot.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/* 拖放相關樣式 */
+.character-slot.drag-over {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* 動畫效果 */
+@keyframes characterAnimation {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.character-slot.playing .character-base {
+    animation: characterAnimation 0.5s ease infinite;
+}
+
+#gameCanvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.score {
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.play-btn {
+    animation: rotate 8s linear infinite;
+}
+
+/* 添加動畫效果 */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.character-slot.playing .character-wrapper {
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+    50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+    100% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+}
+
+.character-slot.selected {
+    animation: glow 2s infinite;
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cycle-timer {
+    font-family: monospace;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.play-hint {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+    pointer-events: none;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+} 
+
