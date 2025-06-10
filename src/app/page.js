@@ -144,7 +144,7 @@ export default function Home() {
         />
         <div
           className="absolute z-10 cursor-pointer hover:scale-110 transition-transform"
-          style={{ top: '1.5%', left: '0.8%' }}
+          style={{ top: '0.8%', left: '0.8%' }}
           onClick={() => setGameStarted(false)}
         >
           <div
@@ -152,18 +152,18 @@ export default function Home() {
             style={{
               backgroundColor: '#986acc',
               borderColor: '#f2e5fb',
-              width: '8vw',
-              height: '8vw',
-              maxHeight: '80px',
-              maxWidth: '80px',
-              minHeight: '32px',
-              minWidth: '32px'
+              width: '6vw',
+              height: '6vw',
+              maxHeight: '96px',
+              maxWidth: '96px',
+              minHeight: '2px',
+              minWidth: '2px'
             }}
           >
             <svg
               viewBox="0 0 24 24"
               fill="none"
-              style={{ color: '#f2e5fb', width: '60%', height: '60%' }}
+              style={{ color: '#f2e5fb', width: '65%', height: '65%' }}
             >
               <path
                 d="M19 12H5M12 19L5 12L12 5"
@@ -195,7 +195,7 @@ export default function Home() {
                   className="object-contain"
                 />
               </div>
-              <div
+              {/* <div
                 className="absolute"
                 style={{
                   top: game.pinPosition.top,
@@ -210,7 +210,7 @@ export default function Home() {
                   fill
                   className="object-contain"
                 />
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
