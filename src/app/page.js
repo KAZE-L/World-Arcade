@@ -144,18 +144,18 @@ export default function Home() {
         />
         <div
           className="absolute z-10 cursor-pointer hover:scale-110 transition-transform"
-          style={{ top: '1.5%', left: '1%' }}
+          style={{ top: '1.5%', left: '0.8%' }}
           onClick={() => setGameStarted(false)}
         >
           <div
             className="rounded-lg shadow-lg transition-colors flex items-center justify-center"
             style={{
-              backgroundColor: '#a26fd8',
+              backgroundColor: '#986acc',
               borderColor: '#f2e5fb',
-              width: '3.5vw',
-              height: '3.5vw',
-              maxHeight: '64px',
-              maxWidth: '64px',
+              width: '8vw',
+              height: '8vw',
+              maxHeight: '80px',
+              maxWidth: '80px',
               minHeight: '32px',
               minWidth: '32px'
             }}
