@@ -133,9 +133,9 @@ const Level = ({ level = 1 }) => {
       router.push(`/NewZealandSheepCatch/game/fail?level=${level}`);
     } else if (blackCaught >= sheepCount.black && life > 0) {
       if (level >= 5) {
-        router.push('/game/success');
+        router.push('/NewZealandSheepCatch/game/success');
       } else {
-        router.push(`/game/level-${level + 1}`);
+        router.push(`/NewZealandSheepCatch/game/level-${level + 1}`);
       }
     }
   }, [life, blackCaught, router, level]);
