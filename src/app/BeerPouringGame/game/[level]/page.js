@@ -66,7 +66,7 @@ export default function GamePage() {
         if (numericLevel < 3) {
           router.push(`/BeerPouringGame/game/${numericLevel + 1}`);
         } else {
-          router.push('/win');
+          router.push('/BeerPouringGame/win');
         }
       } else {
         router.push('/BeerPouringGame/gameover');
