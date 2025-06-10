@@ -1,7 +1,15 @@
-export default function ForestPizzaWorkshop() {
+import Link from 'next/link'
+
+export default function Page() {
   return (
-    <div>
-      <h1>Forest Pizza Workshop</h1>
+    <div className="h-screen w-full flex flex-col">
+      <Link className="bg-gray-400" href="/">
+        Back
+      </Link>
+      <iframe
+        src="https://pizza-game-theta.vercel.app/"
+        className="grow w-full"
+      ></iframe>
     </div>
-  );
+  )
 }
