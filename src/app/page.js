@@ -144,7 +144,7 @@ export default function Home() {
         />
         <div
           className="absolute z-10 cursor-pointer hover:scale-110 transition-transform"
-          style={{ top: '2.5%', left: '1.5%' }}
+          style={{ top: '1.5%', left: '1%' }}
           onClick={() => setGameStarted(false)}
         >
           <div

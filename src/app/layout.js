@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "World-Arcade",
+  title: "World Arcade",
   description: "This is a collection of games featuring unique styles and cultural charms from different countries around the world."
 };
 
