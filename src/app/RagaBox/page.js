@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import './styles.css';
 
 // 音樂主題分類 - 移到組件外部避免重新創建
@@ -28,6 +29,7 @@ const themes = {
 };
 
 export default function RagaBox() {
+  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
   const [slots, setSlots] = useState(new Array(8).fill(null));
   const [cycleTimer, setCycleTimer] = useState(0);
@@ -373,7 +375,41 @@ export default function RagaBox() {
   }
 
   return (
+    
     <div className="game-container">
+      <div
+        className="absolute z-10 cursor-pointer hover:scale-110 transition-transform"
+        style={{ top: '1.5%', left: '1%'}}
+        onClick={() => router.push('/')}
+      >
+        <div 
+          className="rounded-lg shadow-lg transition-colors flex items-center justify-center"
+          style={{ 
+            backgroundColor: '#4a4a4a',
+            borderColor: '#f2e5fb',
+            width: '3.5vw',
+            height: '3.5vw',
+            maxHeight: '64px',
+            maxWidth: '64px',
+            minHeight: '32px',
+            minWidth: '32px'
+          }}
+        >
+          <svg 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            style={{ color: '#f2e5fb', width: '60%', height: '60%'}}
+          >
+            <path 
+              d="M19 12H5M12 19L5 12L12 5" 
+              stroke="currentColor" 
+              strokeWidth="3" 
+              strokeLinecap="square" 
+              strokeLinejoin="miter"
+            />
+          </svg>
+        </div>
+      </div>
       {/* 頂部控制列 */}
       <div className="top-controls">
         {/* <button className="menu-btn">☰</button> */}
